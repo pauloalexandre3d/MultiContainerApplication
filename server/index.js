@@ -5,7 +5,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-//Express server setup
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -61,7 +60,7 @@ app.post('/values', async (req, res) => {
 
   redisClient.hset('values', index, 'Nothing yet!');
   redisPublisher.publish('insert', index);
-  pgClient.query('INSERT INTO values(number) values($1)', [index]);
+  pgClient.query('INSERT INTO values(number) VALUES($1)', [index]);
 
   res.send({ working: true });
 });
