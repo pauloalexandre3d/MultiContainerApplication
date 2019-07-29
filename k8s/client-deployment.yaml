@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: client-deplyoment
+  name: client-deployment
 spec:
   replicas: 3
   selector:
@@ -10,14 +10,14 @@ spec:
   template:
     metadata:
       labels:
-        app: web
+        component: web
     spec:
       containers:
       - name: client
-        image: pauloalexandre3d/multiclient
+        image: pauloalexandre3d/multi-client
         resources:
           limits:
             memory: "128Mi"
-            cpu: "500m"
+            # cpu: "500m"
         ports:
         - containerPort: 3000
